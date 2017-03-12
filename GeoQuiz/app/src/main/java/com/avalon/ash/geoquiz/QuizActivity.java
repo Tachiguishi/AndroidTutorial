@@ -1,5 +1,6 @@
 package com.avalon.ash.geoquiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,11 +59,13 @@ public class QuizActivity extends AppCompatActivity {
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
         updateQuestion();
 
-        mCheatButton = (Button)fineViewById(R.id.cheat_button);
+        mCheatButton = (Button)findViewById(R.id.cheat_button);
         mCheatButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 // start cheatActivity
+                Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+                startActivity(i);
             }
         });
 
