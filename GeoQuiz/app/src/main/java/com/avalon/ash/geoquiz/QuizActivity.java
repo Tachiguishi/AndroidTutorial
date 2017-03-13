@@ -34,6 +34,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void updateQuestion(){
         int question = mQuestionBank[mCurrentIndex].getTextResID();
+        mIsCheater = mQuestionBank[mCurrentIndex].isCheated();
         mQuestionTextView.setText(question);
     }
 
@@ -63,6 +64,7 @@ public class QuizActivity extends AppCompatActivity {
         if(savedInstanceState != null){
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
             mIsCheater = savedInstanceState.getBoolean(KEY_CHEAT, false);
+            mQuestionBank[mCurrentIndex].setCheated(mIsCheater);
         }
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
@@ -116,6 +118,11 @@ public class QuizActivity extends AppCompatActivity {
                 return;
             }
             mIsCheater = CheatActivity.wasAnswerShow(data);
+            if(mIsCheater){
+                mQuestionBank[mCurrentIndex].setCheated(true);
+            }else{
+                mIsCheater = mQuestionBank[mCurrentIndex].isCheated();
+            }
         }
     }
 

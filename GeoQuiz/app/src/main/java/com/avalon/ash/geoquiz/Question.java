@@ -1,15 +1,14 @@
 package com.avalon.ash.geoquiz;
 
-/**
- * Created by Spike on 2/14/2017.
- */
 public class Question {
     private int mTextResID;
     private boolean mAnswerTrue;
+    private boolean mCheated;
 
     public Question(int textResID, boolean answerTrue){
         mTextResID = textResID;
         mAnswerTrue = answerTrue;
+        mCheated = false;
     }
 
     public int getTextResID() {
@@ -26,5 +25,13 @@ public class Question {
 
     public void setAnswerTrue(boolean answerTrue) {
         mAnswerTrue = answerTrue;
+    }
+
+    public boolean isCheated() {
+        return mCheated;
+    }
+
+    public void setCheated(boolean cheated) {
+        mCheated = cheated;
     }
 }
