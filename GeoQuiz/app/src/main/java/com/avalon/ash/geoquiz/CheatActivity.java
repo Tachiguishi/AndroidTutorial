@@ -2,6 +2,7 @@ package com.avalon.ash.geoquiz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class CheatActivity extends AppCompatActivity {
     private boolean mAnswerIsTrue;
     private TextView mAnswerTextView;
     private Button mShowAnswer;
+    private TextView mAPILevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,9 @@ public class CheatActivity extends AppCompatActivity {
                 setAnswerShowResult(true);
             }
         });
+
+        mAPILevel = (TextView)findViewById(R.id.apiLevel);
+        mAPILevel.setText("API Level " + Build.VERSION.SDK_INT);
     }
 
     private void setAnswerShowResult(boolean isAnswerShown){
